@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Объявление переменных
+        //РћР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С…
         int n = 20;
         int [][] chessBoard = new int[n][n];
 
@@ -15,24 +15,24 @@ public class Main {
         int currentY = 0;
         int counter  = 1;
 
-        //Начальная отметка
+        //РќР°С‡Р°Р»СЊРЅР°СЏ РѕС‚РјРµС‚РєР°
         chessBoard[currentX][currentY] = counter;
 
-        //Обход поля
+        //РћР±С…РѕРґ РїРѕР»СЏ
         while (!isItFinish(chessBoard)) {
 
             List<Point> possibleSteps = getPossibleSteps(chessBoard, currentX, currentY);
 
-            //Если возможных шагов нет, а не пройденные клетки остались, то это ошибка
+            //Р•СЃР»Рё РІРѕР·РјРѕР¶РЅС‹С… С€Р°РіРѕРІ РЅРµС‚, Р° РЅРµ РїСЂРѕР№РґРµРЅРЅС‹Рµ РєР»РµС‚РєРё РѕСЃС‚Р°Р»РёСЃСЊ, С‚Рѕ СЌС‚Рѕ РѕС€РёР±РєР°
             if (possibleSteps.size() == 0) {
-                System.out.println("Не удалось обойти всё поле");
+                System.out.println("РќРµ СѓРґР°Р»РѕСЃСЊ РѕР±РѕР№С‚Рё РІСЃС‘ РїРѕР»Рµ");
                 break;
             }
 
             Point selectedStep = possibleSteps.get(0);
             int minCountOfPossibleSteps = getPossibleSteps(chessBoard, selectedStep.x,selectedStep.y).size();
 
-            //Обход всех возможных шагов и поиск шага с наименьшим возможным числом переходов
+            //РћР±С…РѕРґ РІСЃРµС… РІРѕР·РјРѕР¶РЅС‹С… С€Р°РіРѕРІ Рё РїРѕРёСЃРє С€Р°РіР° СЃ РЅР°РёРјРµРЅСЊС€РёРј РІРѕР·РјРѕР¶РЅС‹Рј С‡РёСЃР»РѕРј РїРµСЂРµС…РѕРґРѕРІ
             for (Point step : possibleSteps){
                 int countOfPossibleSteps = getPossibleSteps(chessBoard, step.x, step.y).size();
                 if (minCountOfPossibleSteps > countOfPossibleSteps) {
@@ -41,7 +41,7 @@ public class Main {
                 }
             }
 
-            //Сделаем выбранный шаг
+            //РЎРґРµР»Р°РµРј РІС‹Р±СЂР°РЅРЅС‹Р№ С€Р°Рі
             currentX = selectedStep.x;
             currentY = selectedStep.y;
 
@@ -49,7 +49,7 @@ public class Main {
             chessBoard[currentX][currentY] = counter;
         }
 
-        //Выведем результат
+        //Р’С‹РІРµРґРµРј СЂРµР·СѓР»СЊС‚Р°С‚
         for (int i = 0; i < chessBoard.length; i++) {
             for (int j = 0; j < chessBoard.length; j++) {
                 System.out.print(String.format("%6d", chessBoard[i][j]));
@@ -73,12 +73,12 @@ public class Main {
 
         List<Point> result = new ArrayList();
 
-        //Возможные шаги относительно текущего положения
+        //Р’РѕР·РјРѕР¶РЅС‹Рµ С€Р°РіРё РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ С‚РµРєСѓС‰РµРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ
         Point[] allPossibleSteps = {new Point(1,-2), new Point(2,-1),  new Point(2,1),
                                     new Point(1,2),  new Point(-1,2),  new Point(-2,1),
                                     new Point(-2,1), new Point(-2,-1), new Point(-1,-2)};
 
-        //Обход всех возможных шагов и определение в какую клетку ещё можно пойти
+        //РћР±С…РѕРґ РІСЃРµС… РІРѕР·РјРѕР¶РЅС‹С… С€Р°РіРѕРІ Рё РѕРїСЂРµРґРµР»РµРЅРёРµ РІ РєР°РєСѓСЋ РєР»РµС‚РєСѓ РµС‰С‘ РјРѕР¶РЅРѕ РїРѕР№С‚Рё
         for (Point step : allPossibleSteps) {
             if ((currentX + step.x >= chessBoard.length)
                     || (currentX + step.x < 0)
@@ -94,7 +94,7 @@ public class Main {
     }
 
     /**
-     * Вспомогательный класс для хранения координат
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РєРѕРѕСЂРґРёРЅР°С‚
      */
     static class Point{
         int x;
