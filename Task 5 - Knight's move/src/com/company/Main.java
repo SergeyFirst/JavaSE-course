@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Main {
 
+    private static final int N = 20;
+
     public static void main(String[] args) {
 
         //Объявление переменных
-        int n = 20;
-        int [][] chessBoard = new int[n][n];
-
+        int [][] chessBoard = new int[N][N];
         int currentX = 0;
         int currentY = 0;
         int counter  = 1;
