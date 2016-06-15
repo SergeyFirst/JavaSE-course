@@ -2,23 +2,24 @@ package com.company;
 
 public class Main {
 
+    private final static int N = 15;
+
     public static void main(String[] args) {
 
-        int n = 15;
-        int [][] matrix = new int[n][n];
+        int [][] matrix = new int[N][N];
         int counter = 0;
         int x = -1;
         int y = 0;
         int directionX = 1;
         int directionY = 0;
 
-        while (counter < n * n) {
+        while (counter < N * N) {
             counter++;
             x += directionX;
             y += directionY;
             matrix[x][y] = counter;
 
-            if ((x + directionX == n) || (y + directionY == n)
+            if ((x + directionX == N) || (y + directionY == N)
                     ||(x + directionX == -1) || (y + directionY == -1)
                     || (matrix[x + directionX][y + directionY] != 0)) {
                 if ((directionX == 1) && (directionY == 0)) {
@@ -39,8 +40,8 @@ public class Main {
         }
 
         //Выведем результат
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
                 System.out.print(String.format("%6d", matrix[i][j]));
             }
             System.out.println("");
