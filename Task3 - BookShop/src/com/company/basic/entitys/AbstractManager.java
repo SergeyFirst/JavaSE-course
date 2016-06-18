@@ -2,8 +2,8 @@ package com.company.basic.entitys;
 
 import com.company.DAO.DAOFactory;
 import com.company.DAO.InterfaceDAO;
-import com.company.exception.BussinesException;
-import com.company.exception.DAOException;
+import com.company.exceptions.BussinesException;
+import com.company.exceptions.DAOException;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.exception.BussinesException;
+import com.company.exceptions.BussinesException;
 import com.company.books.*;
 import com.company.orders.*;
 import com.company.users.*;

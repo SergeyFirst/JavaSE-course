@@ -1,6 +1,6 @@
 package com.company.DAO;
 
-import com.company.exception.DAOException;
+import com.company.exceptions.DAOException;
 import com.company.basic.entitys.AbstractEntity;
 import com.company.basic.entitys.AbstractFilter;
 
