@@ -1,21 +1,14 @@
-package com.company.orders;
+package com.company.filters;
 
-import com.company.basic.entitys.AbstractEntity;
+import com.company.basic.entitys.AbstractFilter;
 import com.company.users.User;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class Order extends AbstractEntity{
+public class OrderFilter extends AbstractFilter{
     private Date data;
     private int number;
     private User user;
     private float total;
-    private List<ItemListOfBooks> listOfBooks = new ArrayList<ItemListOfBooks>();
-
-    public Order(){
-        data = new Date();
-    }
 
     public Date getData() {
         return data;
@@ -47,13 +40,5 @@ public class Order extends AbstractEntity{
 
     public void setTotal(float total) {
         this.total = total;
-    }
-
-    public List<ItemListOfBooks> getListOfBooks() {
-        return listOfBooks;
-    }
-
-    public void setListOfBooks(List<ItemListOfBooks> listOfBooks) {
-        this.listOfBooks = listOfBooks;
     }
 }

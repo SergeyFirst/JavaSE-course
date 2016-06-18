@@ -1,59 +1,38 @@
 package com.company;
 
+import com.company.exception.BussinesException;
 import com.company.books.*;
 import com.company.orders.*;
 import com.company.users.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws BussinesException {
 
-        //Заполнение списка книг
-        Book editBook = BookManager.createBook("Война и мир", "Лев Толстой");
-        editBook.numberOfPages = 1500;
-        editBook.price = 500;
-        editBook.save();
 
-        BookManager.createBook("Анна Каренина","Лев Толстой").save();
-        BookManager.createBook("Руслан и Людмила","Александр Пушкин").save();
-        BookManager.createBook("Кавказская пленница","Александр Пушкин").save();
+        //Работа с книгами
+        BookManager bookManager = new BookManager();
 
-        BookManager.findBook("Руслан и Людмила","Александр Пушкин").price = 400;
+        Book newBook = new Book("Война и мир", "Лев Толстой");
+        newBook.setNumberOfPages(1500);
+        newBook.setPrice(500);
 
-        //Поиск по автору и вывод списка
-        System.out.println("Книги Льва Толстого:");
-        for (Book book : BookManager.findBooksByAuthor("Лев Толстой")) {
-            System.out.printf("Название: %s, Автор: %s, Число страниц: %d\n", book.name, book.author, book.numberOfPages);
-        }
+        bookManager.add(newBook);
 
-        //Редактирование книги
-        editBook = BookManager.findBook("Кавказская пленница","Александр Пушкин");
-        editBook.numberOfPages = 300;
-        editBook.save();
+        Book myBook = (Book) bookManager.get(2L);
+        System.out.println(myBook.getName());
 
-        //Поиск по автору и вывод списка
-        System.out.println("Книги Александра Пушкина:");
-        for (Book book : BookManager.findBooksByAuthor("Александр Пушкин")) {
-            System.out.printf("Название: %s, Автор: %s, Число страниц: %d\n", book.name, book.author, book.numberOfPages);
-        }
+        //Работа с пользователями
+        UserManager userManager = new UserManager();
 
-        UserManager.createUser("Иван","Иванов").save();
-        UserManager.createUser("Петр","Петров").save();
-        UserManager.createUser("Сидор","Сидоров").save();
+        User newUser = new User("Иван", "Иванов");
+        userManager.add(newUser);
 
-        //Вывод всех пользователей
-        System.out.println("Пользователи:");
-        for (User user : UserManager.getAllUsers()) {
-            System.out.printf("Имя: %s, Фамилия: %s\n", user.firstName, user.lastName);
-        }
+        //Работа с заказами
+        OrderManager orderManager = new OrderManager();
 
-        //Создание, заполнение и печать заказа
-        Order order = OrderManager.createOrder();
-        order.user = UserManager.findUser("Сидор","Сидоров");
-        order.addItemListOfBook(BookManager.findBook("Война и мир", "Лев Толстой"), 1);
-        order.addItemListOfBook(BookManager.findBook("Руслан и Людмила","Александр Пушкин"),1);
-        order.save();
-        order.print();
+        Order newOrder = new Order();
+        orderManager.add(newOrder);
 
     }
 }

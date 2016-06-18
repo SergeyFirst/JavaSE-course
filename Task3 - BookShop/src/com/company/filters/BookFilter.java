@@ -1,8 +1,8 @@
-package com.company.books;
+package com.company.filters;
 
-import com.company.basic.entitys.AbstractEntity;
+import com.company.basic.entitys.AbstractFilter;
 
-public class Book extends AbstractEntity {
+public class BookFilter extends AbstractFilter{
 
     //Название книги
     private String name;
@@ -13,8 +13,11 @@ public class Book extends AbstractEntity {
     //Цена
     private float price;
 
-    public Book(String name, String author){
-        this.name = name;
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
         this.author = author;
     }
 
@@ -24,14 +27,6 @@ public class Book extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public int getNumberOfPages() {

@@ -1,15 +1,10 @@
-package com.company.users;
+package com.company.filters;
 
-import com.company.basic.entitys.AbstractEntity;
+import com.company.basic.entitys.AbstractFilter;
 
-public class User extends AbstractEntity {
+public class UserFilter extends AbstractFilter {
     private String firstName;
     private String lastName;
-
-    public User(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
     public String getFirstName() {
         return firstName;

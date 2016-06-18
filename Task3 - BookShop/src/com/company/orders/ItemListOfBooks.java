@@ -10,7 +10,7 @@ public class ItemListOfBooks {
 
     public ItemListOfBooks(Book book, int quantity){
         this.book = book;
-        this.prise = book.price;
+        this.prise = book.getPrice();
         this.quantity = quantity;
         this.sum = prise * quantity;
     }
