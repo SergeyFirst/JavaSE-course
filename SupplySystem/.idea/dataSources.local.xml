@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - SupplySystem@localhost" uuid="9a52db29-758a-43f1-a418-78403dfd3447">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>SupplySystem.pg_catalog SupplySystem.public</schema-pattern>
+      <default-schemas>SupplySystem.pg_catalog SupplySystem.public</default-schemas>
+    </data-source>
+  </component>
+</project>

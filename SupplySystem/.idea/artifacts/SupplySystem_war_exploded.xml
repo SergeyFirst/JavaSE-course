@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="SupplySystem:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/SupplySystem_war_exploded</output-path>
+    <root id="archive" name="SupplySystem_war exploded.war">
+      <element id="javaee-facet-resources" facet="SupplySystem/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SupplySystem" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

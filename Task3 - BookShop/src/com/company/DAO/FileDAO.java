@@ -68,12 +68,80 @@ public class FileDAO implements InterfaceDAO {
 
     @Override
     public void update(AbstractEntity entity) throws DAOException{
-        //Необходимо реализовать
+
+        List <AbstractEntity> fileList = new ArrayList<AbstractEntity>();
+
+        //Прочитаем файл и исключим объект с нужным ID
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(entityClass.getSimpleName()+".dat"));){
+            AbstractEntity object = null;
+            while (true) {
+                try {
+                    object = (AbstractEntity) input.readObject();
+                    if (!object.getID().equals(entity.getID())) {
+                        fileList.add(entity);
+                    } else {
+                        fileList.add(object);
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                    throw new DAOException();
+                } catch (IOException e) {
+                    break; //Конец файла
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DAOException();
+        }
+
+        //Запишем файл
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(entityClass.getSimpleName()+".dat"));) {
+            for (AbstractEntity item : fileList) {
+                out.writeObject(item);
+            }
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DAOException();
+        }
     }
 
     @Override
     public void delete(Long ID) throws DAOException{
-        //Необходимо реализовать
+
+        List <AbstractEntity> fileList = new ArrayList<AbstractEntity>();
+
+        //Прочитаем файл и исключим объект с нужным ID
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(entityClass.getSimpleName()+".dat"));){
+            AbstractEntity object = null;
+            while (true) {
+                try {
+                    object = (AbstractEntity) input.readObject();
+                    if (!object.getID().equals(ID)) {
+                        fileList.add(object);
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                    throw new DAOException();
+                } catch (IOException e) {
+                    break; //Конец файла
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DAOException();
+        }
+
+        //Запишем файл
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(entityClass.getSimpleName()+".dat"));) {
+            for (AbstractEntity item : fileList) {
+                out.writeObject(item);
+            }
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DAOException();
+        }
     }
 
     @Override
@@ -81,6 +149,7 @@ public class FileDAO implements InterfaceDAO {
 
         AbstractEntity result = null;
 
+        //Прочитаем файл и найдём объект с нужным ID
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(entityClass.getSimpleName()+".dat"));){
             AbstractEntity object = null;
             while (true) {
@@ -107,7 +176,28 @@ public class FileDAO implements InterfaceDAO {
 
     @Override
     public List<AbstractEntity> find(AbstractFilter filter) throws DAOException{
-        //Необходимо реализовать
-        return null;
+
+        List <AbstractEntity> fileList = new ArrayList<AbstractEntity>();
+
+        //Прочитаем файл
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(entityClass.getSimpleName()+".dat"));){
+            AbstractEntity object = null;
+            while (true) {
+                try {
+                    object = (AbstractEntity) input.readObject();
+                    fileList.add(object);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                    throw new DAOException();
+                } catch (IOException e) {
+                    break; //Конец файла
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new DAOException();
+        }
+
+        return fileList;
     }
 }
